@@ -1,0 +1,25 @@
+{
+  "name": "typescript_tutorial",
+  "version": "1.0.0",
+  "description": "tutorial",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soumyaevan/Typescript.git"
+  },
+  "author": "soumya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soumyaevan/Typescript/issues"
+  },
+  "homepage": "https://github.com/soumyaevan/Typescript#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4",
+    "tslint": "^6.0.0",
+    "typescript": "^3.8.2"
+  }
+}
