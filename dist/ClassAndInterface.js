@@ -13,28 +13,38 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Department = /** @class */ (function () {
+    // name : string;
+    // constructor(n: string){
+    //     this.name = n;
+    // }
     function Department(id, name) {
         this.id = id;
         this.name = name;
-        this.employees = []; // Protected identifier
+        this.employees = [];
     }
-    Department.createEmployee = function (name) {
-        return { name: name };
+    Department.prototype.describe = function () {
+        // console.log('Department: ' + this.name);
+        console.log("Department: " + this.id + " -> " + this.name);
     };
-    // {
-    //     // console.log('Department: ' + this.name);
-    //     console.log(`Department: ${this.id} -> ${this.name}`);
-    // }
     Department.prototype.addEmployee = function (name) {
         this.employees.push(name);
     };
     Department.prototype.showEmployees = function () {
-        console.log("Name of the employees of " + this.name + " deartment are: " + this.employees);
-        // console.log(this.employees);
+        console.log(this.employees);
     };
-    Department.fiscalYear = 2020;
     return Department;
 }());
+var depName = new Department('CS-IT', 'Automation Testing');
+// console.log(depName);
+depName.describe();
+depName.addEmployee('Soumya');
+depName.addEmployee('Sanu');
+depName.showEmployees();
+// const anotherDep = {
+//     name: 'Development',
+//     describe: depName.describe
+// }
+// anotherDep.describe();
 // tslint:disable-next-line: max-classes-per-file
 var ITDepartment = /** @class */ (function (_super) {
     __extends(ITDepartment, _super);
@@ -49,9 +59,6 @@ var ITDepartment = /** @class */ (function (_super) {
     ITDepartment.prototype.showAdmins = function () {
         console.log(this.admins);
     };
-    ITDepartment.prototype.describe = function () {
-        console.log("Department id of IT : " + this.id);
-    };
     return ITDepartment;
 }(Department));
 // tslint:disable-next-line: max-classes-per-file
@@ -62,47 +69,20 @@ var AccountDepartment = /** @class */ (function (_super) {
         _this.report = '';
         return _this;
     }
-    Object.defineProperty(AccountDepartment.prototype, "accountReport", {
-        get: function () {
-            if (this.report) {
-                return this.report;
-            }
-            throw new Error('No report found!!!'); // getter and setter
-        },
-        set: function (value) {
-            if (!value) {
-                throw new Error('Pass a valid value');
-            }
-            this.report = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    AccountDepartment.prototype.addEmployee = function (name) {
-        if (name !== 'Arup') {
-            this.employees.push(name);
-        }
+    AccountDepartment.prototype.addReport = function (report) {
+        this.report = report;
     };
     AccountDepartment.prototype.showreport = function () {
-        console.log(this.accountReport);
-    };
-    AccountDepartment.prototype.describe = function () {
-        console.log("Department id of account : " + this.id);
+        console.log(this.report);
     };
     return AccountDepartment;
 }(Department));
 var depIT = new ITDepartment('I1', ['Soumya', 'Evan']);
 depIT.addEmployee('Arup');
 depIT.showAdmins();
-depIT.describe();
 var depAccount = new AccountDepartment('A1');
-depAccount.addEmployee('Arup');
-depAccount.addEmployee('Sandip');
 depAccount.addEmployee('Pranoy');
-// depAccount.addReport('Report is OK');
+depAccount.addReport('Report is OK');
 depAccount.showEmployees();
-depAccount.accountReport = 'All the reports are OK';
 depAccount.showreport();
-var emp1 = Department.createEmployee('Soumya');
-console.log(emp1);
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=ClassAndInterface.js.map

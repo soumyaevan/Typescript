@@ -1,16 +1,15 @@
-abstract class Department{
+class Department{
     static fiscalYear = 2020;
-    constructor(protected readonly id: string,private name: string){}
+    constructor(private readonly id: string,private name: string){}
     protected employees : string[] = [];        // Protected identifier
 
     static createEmployee(name : string){
         return {name};
     }
-    abstract describe(): void;
-    // {
-    //     // console.log('Department: ' + this.name);
-    //     console.log(`Department: ${this.id} -> ${this.name}`);
-    // }
+    describe(this: Department){
+        // console.log('Department: ' + this.name);
+        console.log(`Department: ${this.id} -> ${this.name}`);
+    }
     addEmployee(name: string){
         this.employees.push(name);
     }
@@ -31,9 +30,6 @@ class ITDepartment extends Department{
 
     showAdmins(){
         console.log(this.admins);
-    }
-    describe(){
-        console.log(`Department id of IT : ${this.id}`);
     }
 }
 
@@ -66,15 +62,12 @@ class AccountDepartment extends Department{
     showreport(){
         console.log(this.accountReport);
     }
-    describe(){
-        console.log(`Department id of account : ${this.id}`);
-    }
 }
 
 const depIT = new ITDepartment('I1',['Soumya','Evan']);
 depIT.addEmployee('Arup');
 depIT.showAdmins();
-depIT.describe();
+
 const depAccount = new AccountDepartment('A1');
 depAccount.addEmployee('Arup');
 depAccount.addEmployee('Sandip');
